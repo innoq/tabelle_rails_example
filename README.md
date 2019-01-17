@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an example application written in Rails demonstrating how [Tabelle](https://github.com/innoq/tabelle) can work.
 
-Things you may want to cover:
+## Requirements
 
-* Ruby version
+* Rails 5.1.6
 
-* System dependencies
+## Setting it up
 
-* Configuration
+    bundle install
+    rails db:migrate
+    rails db:seed # inserts 100 random people into the db
 
-* Database creation
+## Running the app
 
-* Database initialization
+    rails server
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The application is then available under http://localhost:3000
