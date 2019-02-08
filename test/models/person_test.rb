@@ -76,4 +76,36 @@ class PersonTest < ActiveSupport::TestCase
       assert p.address_includes? "Erma"
     end
   end
+
+  test "sort by name ascending" do
+    people = Person.sort("name-asc")
+
+    assert people.first.name == "Friend"
+    assert people.second.name == "Joy"
+    assert people.third.name == "Tony"
+  end
+
+  test "sort by name descending" do
+    people = Person.sort("name-desc")
+
+    assert people.first.name == "Tony"
+    assert people.second.name == "Joy"
+    assert people.third.name == "Friend"
+  end
+
+  test "sort by email ascending" do
+    people = Person.sort("email-asc")
+
+    assert people.first.email == "foo@xyz.com"
+    assert people.second.email == "friend@boo.com"
+    assert people.third.email == "myemail@xyz.com"
+  end
+
+  test "sort by email descending" do
+    people = Person.sort("email-desc")
+
+    assert people.first.email == "myemail@xyz.com"
+    assert people.second.email == "friend@boo.com"
+    assert people.third.email == "foo@xyz.com"
+  end
 end

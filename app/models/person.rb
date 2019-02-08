@@ -1,4 +1,13 @@
 class Person < ApplicationRecord
+  def self.sort(sort)
+    sort_prefs = sort.split("-")
+    order = sort_prefs[0]
+    if sort_prefs[1] == 'desc' then
+      order = order + " DESC"
+    end
+    Person.order(order)
+  end
+
   def self.filter(name: nil, email: nil, phone: nil, address: nil)
     name = name ? "%#{name.downcase}%" : "%"
     email = email ? "%#{email.downcase}%" : "%"
