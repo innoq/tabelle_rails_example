@@ -1,10 +1,13 @@
 class PeopleController < ApplicationController
-  before_action :set_person, only: [:show, :edit, :update, :destroy]
+  # before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = Person.filter(name: filter_params[:name],
+      email: filter_params[:email],
+      phone: filter_params[:phone],
+      address: filter_params[:address])
   end
 
   # GET /people/1
@@ -63,12 +66,16 @@ class PeopleController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_person
-      @person = Person.find(params[:id])
-    end
+    # def set_person
+    #   @person = Person.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
       params.require(:person).permit(:name, :phone, :email, :street, :city, :zip, :country)
+    end
+
+    def filter_params
+      params.permit(:name, :phone, :email, :address)
     end
 end
