@@ -2,10 +2,11 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.filter(name: filter_params[:name],
-      email: filter_params[:email],
-      phone: filter_params[:phone],
-      address: filter_params[:address])
+    @filter = filter_params
+    @people = Person.filter(name: @filter[:name],
+      email: @filter[:email],
+      phone: @filter[:phone],
+      address: @filter[:address])
   end
 
   private

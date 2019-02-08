@@ -4,11 +4,14 @@
     <title>TabelleRailsExample</title>
     <%= csrf_meta_tags %>
 
+    <link rel="stylesheet" href="https://unpkg.com/tabelle@0.1.0/dist/tabelle.css" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= yield %>
+
+    <script src="https://unpkg.com/tabelle@0.1.0/dist/tabelle.js"></script>
   </body>
 </html>

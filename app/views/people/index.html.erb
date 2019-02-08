@@ -2,31 +2,33 @@
 
 <h1>People</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th>Address</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @people.each do |person| %>
+<ta-belle id="tabelle" search-src="/" change-uri>
+  <table>
+    <thead>
       <tr>
-        <td><%= person.name %></td>
-        <td><%= person.phone %></td>
-        <td><%= person.email %></td>
-        <td>
-          <div><%= person.street %></div>
-          <div><%= person.city %>, <%= person.zip %></div>
-          <div><%= person.country %></div>
-        </td>
+        <th name="name" value="<%= @filter[:name] %>" nosort>Name</th>
+        <th name="phone" value="<%= @filter[:phone] %>" nosort>Phone</th>
+        <th name="email" value="<%= @filter[:email] %>" nosort>Email</th>
+        <th name="address" value="<%= @filter[:address] %>" nosort>Address</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @people.each do |person| %>
+        <tr>
+          <td><%= person.name %></td>
+          <td><%= person.phone %></td>
+          <td><%= person.email %></td>
+          <td>
+            <div><%= person.street %></div>
+            <div><%= person.city %>, <%= person.zip %></div>
+            <div><%= person.country %></div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</ta-belle>
 
 <br>
 

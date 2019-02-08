@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.tabelle td {
+  padding-bottom: 0.5rem;
+}
