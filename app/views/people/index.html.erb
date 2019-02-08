@@ -8,11 +8,7 @@
       <th>Name</th>
       <th>Phone</th>
       <th>Email</th>
-      <th>Street</th>
-      <th>City</th>
-      <th>Zip</th>
-      <th>Country</th>
-      <th colspan="3"></th>
+      <th>Address</th>
     </tr>
   </thead>
 
@@ -22,13 +18,11 @@
         <td><%= person.name %></td>
         <td><%= person.phone %></td>
         <td><%= person.email %></td>
-        <td><%= person.street %></td>
-        <td><%= person.city %></td>
-        <td><%= person.zip %></td>
-        <td><%= person.country %></td>
-        <td><%# link_to 'Show', person %></td>
-        <td><%# link_to 'Edit', edit_person_path(person) %></td>
-        <td><%# link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <div><%= person.street %></div>
+          <div><%= person.city %>, <%= person.zip %></div>
+          <div><%= person.country %></div>
+        </td>
       </tr>
     <% end %>
   </tbody>
