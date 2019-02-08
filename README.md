@@ -12,6 +12,13 @@ This is an example application written in Rails demonstrating how [Tabelle](http
     rails db:migrate
     rails db:seed # inserts 100 random people into the db
 
+## Deploying the app
+
+    git push heroku
+
+    ## to run migrations on the production server
+    heroku run rails db:migrate
+
 ## Running the app
 
     rails server
