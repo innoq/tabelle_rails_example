@@ -1,19 +1,28 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  phone: MyString
-  email: MyString
-  street: MyString
-  city: MyString
-  zip: MyString
-  country: MyString
+  name: Joy
+  phone: +111111
+  email: myemail@xyz.com
+  street: Street
+  city: City
+  zip: 12345
+  country: USA
 
 two:
-  name: MyString
-  phone: MyString
-  email: MyString
-  street: MyString
-  city: MyString
-  zip: MyString
-  country: MyString
+  name: Tony
+  phone: +3333
+  email: foo@xyz.com
+  street: Street
+  city: City
+  zip: 12345
+  country: USA
+
+three:
+  name: Friend
+  phone: +22222
+  email: friend@boo.com
+  street: Straße
+  city: Stadt
+  zip: 54321
+  country: Germany
