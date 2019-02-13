@@ -15,7 +15,7 @@ two:
   email: foo@xyz.com
   street: Street
   city: City
-  zip: 12345
+  zip: 2345
   country: USA
 
 three:

@@ -3,10 +3,12 @@ class PeopleController < ApplicationController
   # GET /people.json
   def index
     @filter = filter_params
+    @sort = params[:sort]
     @people = Person.filter(name: @filter[:name],
-      email: @filter[:email],
-      phone: @filter[:phone],
-      address: @filter[:address])
+        email: @filter[:email],
+        phone: @filter[:phone],
+        address: @filter[:address])
+      .order(Person.sortString(@sort))
   end
 
   private

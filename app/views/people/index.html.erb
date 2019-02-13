@@ -2,14 +2,14 @@
 
 <h1>People</h1>
 
-<ta-belle id="tabelle" search-src="/" change-uri>
+<ta-belle id="tabelle" search-src="/" sort="<%= @sort %>" change-uri>
   <table>
     <thead>
       <tr>
-        <th name="name" value="<%= @filter[:name] %>" nosort>Name</th>
-        <th name="phone" value="<%= @filter[:phone] %>" nosort>Phone</th>
-        <th name="email" value="<%= @filter[:email] %>" nosort>Email</th>
-        <th name="address" value="<%= @filter[:address] %>" nosort>Address</th>
+        <th name="name" value="<%= @filter[:name] %>">Name</th>
+        <th name="phone" value="<%= @filter[:phone] %>">Phone</th>
+        <th name="email" value="<%= @filter[:email] %>">Email</th>
+        <th name="address" value="<%= @filter[:address] %>">Address</th>
       </tr>
     </thead>
 

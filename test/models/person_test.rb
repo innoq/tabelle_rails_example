@@ -62,10 +62,10 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   test "filter by zip in address for Person" do
-    people = Person.filter(address: "1234")
+    people = Person.filter(address: "234")
     assert people.size == 2
     people.each do |p|
-      assert p.address_includes? "1234"
+      assert p.address_includes? "234"
     end
   end
 
@@ -78,7 +78,7 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   test "sort by name ascending" do
-    people = Person.sort("name-asc")
+    people = Person.order(Person.sortString("name-asc"))
 
     assert people.first.name == "Friend"
     assert people.second.name == "Joy"
@@ -86,7 +86,7 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   test "sort by name descending" do
-    people = Person.sort("name-desc")
+    people = Person.order(Person.sortString("name-desc"))
 
     assert people.first.name == "Tony"
     assert people.second.name == "Joy"
@@ -94,7 +94,7 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   test "sort by email ascending" do
-    people = Person.sort("email-asc")
+    people = Person.order(Person.sortString("email-asc"))
 
     assert people.first.email == "foo@xyz.com"
     assert people.second.email == "friend@boo.com"
@@ -102,10 +102,51 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   test "sort by email descending" do
-    people = Person.sort("email-desc")
+    people = Person.order(Person.sortString("email-desc"))
 
     assert people.first.email == "myemail@xyz.com"
     assert people.second.email == "friend@boo.com"
     assert people.third.email == "foo@xyz.com"
+  end
+
+  test "sort by address ascending" do
+    people = Person.order(Person.sortString("address-asc"))
+    
+    assert people.first.address == "Straße\nStadt, 54321\nGermany"
+    assert people.second.address == "Street\nCity, 12345\nUSA"
+    assert people.third.address == "Street\nCity, 2345\nUSA"
+  end
+
+  test "sort by address descending" do
+    people = Person.order(Person.sortString("address-desc"))
+    
+    assert people.first.address == "Street\nCity, 2345\nUSA"
+    assert people.second.address == "Street\nCity, 12345\nUSA"
+    assert people.third.address == "Straße\nStadt, 54321\nGermany"
+  end
+
+  test "sort null" do
+    assert_default_sort_order Person.order(Person.sortString(nil))
+  end
+
+  test "sort invalid string no dashes" do
+    assert_default_sort_order Person.order(Person.sortString("B"))
+  end
+
+  test "sort invalid string" do
+    assert_default_sort_order Person.order(Person.sortString("a-b-c"))
+  end
+
+  def assert_default_sort_order(people)
+    assert people.first.name == 'Friend'
+    assert people.second.name == 'Tony'
+    assert people.third.name == 'Joy'
+  end
+
+  test "filter and sort" do
+    people = Person.filter(email: "oo").order(Person.sortString("email-asc"))
+
+    assert people.first.email == "foo@xyz.com"
+    assert people.second.email == "friend@boo.com"
   end
 end
