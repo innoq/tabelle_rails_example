@@ -14,6 +14,7 @@ This is an example application written in Rails demonstrating how [Tabelle](http
 
 ## Deploying the app
 
+    heroku login
     git push heroku
 
     ## to run migrations on the production server
